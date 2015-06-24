@@ -2,7 +2,7 @@ var api = {
   fs: require("fs"),
   http: require("http"),
   url: require('url'),
-  md5: require("./blueimp-md5").md5,
+  md5: require("blueimp-md5").md5,
   add: function(a, b) {
     return a + b;
   },
