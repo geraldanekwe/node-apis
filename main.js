@@ -50,12 +50,16 @@ function responseHandler(request, response) {
     var expression = request.url.replace(/[\/][A-z]+[\/]/g, '');
     var expressionArr = expression.match(/(^[\d]+)(\D)([\d]+)/);
     var var1 = parseInt(expressionArr[1]);
+    var operator = (expressionArr[2])
     var var2 = parseInt(expressionArr[3]);
-    var result = api.operation[expressionArr[2]](expressionArr[1], expressionArr[3]);
-    response.write(result.toString());
+    var result = api.operation[operator](var1, var2);
+    var format =
+      var1 + " " + operator + " " + var2 + " = " + result;
+    response.write(format.toString());
     response.end();
   } else if (request.url.match("/Counts/")) {
-    var sentence = request.url.replace(/[\/][A-z]+[\/]/g, '').replace(/%20/g, " ");
+    var sentence = request.url.replace(/[\/][A-z]+[\/]/g, '');
+    sentence = decodeURI(sentence);
     var result = api.counter(sentence);
     response.write(JSON.stringify(result));
     response.end();
