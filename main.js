@@ -52,7 +52,6 @@ function responseHandler(request, response) {
     var var1 = parseInt(expressionArr[1]);
     var var2 = parseInt(expressionArr[3]);
     var result = api.operation[expressionArr[2]](expressionArr[1], expressionArr[3]);
-    console.log(result);
     response.write(result.toString());
     response.end();
   } else if (request.url.match("/Counts/")) {
